@@ -38,4 +38,8 @@ select * from Address_Book_Table;
 
 delete from Address_Book_Table where FirstName='Harish' and LastName='Krishnan';
 
+--------------------UC6---------------------
+
+Select FirstName,LastName from Address_Book_Table where City='Chennai' or StateName='TamilNadu';
+
 
