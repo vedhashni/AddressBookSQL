@@ -24,7 +24,7 @@ Insert into Address_Book_Table values('Harish','Krishnan','Jew Town','Cochin','K
 ('Kishore','Kumar','ECR','Chennai','TamilNadu',60025,9845672378,'kishore2000@gmail.com'),
 ('Swetha','Raju','P.N.Pudhur','Coimbatore','TamilNadu',600082,8967245870,'swetha123@gmail.com');
 Insert into Address_Book_Table values('Vedhashni','Velmurugan','Madipakkam','Chennai','TamilNadu',60091,8939620291,'vedha39@gmail.com');
-
+Insert into Address_Book_Table values('Ashok','Kumar','ECR','Chennai','TamilNadu',600024,9867423567,'ashok32@gmail.com');
 --------------UC4------------------------
 update Address_Book_Table set EmailId='harsh32@gmail.com' where FirstName='Harish';
 
@@ -45,5 +45,9 @@ Select FirstName,LastName from Address_Book_Table where City='Chennai' or StateN
 --------------------UC7---------------------
 
 Select Count(*) As Count,StateName,City from Address_Book_Table group by StateName,City;
+
+-------------------UC8----------------------
+
+select FirstName,LastName from Address_Book_Table where City='Chennai' order by FirstName;
 
 
