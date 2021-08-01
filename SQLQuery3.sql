@@ -75,3 +75,7 @@ where Address='Mambakkam';
 
 
 select * from Address_Book_Table;
+
+------------------------UC10--------------
+
+Select count(*)as CountType, RelationType  from Address_Book_Table group by RelationType;
