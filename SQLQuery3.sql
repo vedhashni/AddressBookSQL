@@ -1,10 +1,10 @@
-------------------UC1------------------
+------------------UC1 Create Database------------------
 
 create database AddressBookSystem;
 
 use AddressBookSystem;
 
------------------UC2----------------
+-----------------UC2 Create Table---------------
 
 create table Address_Book_Table
 (
@@ -19,13 +19,14 @@ EmailId varchar(100)
 );
 
 
----------------UC3-----------------
+---------------UC3 Inserting the values to fields-----------------
 Insert into Address_Book_Table values('Harish','Krishnan','Jew Town','Cochin','Kerala',60035,8657323789,'harsh@gmail.com'),
 ('Kishore','Kumar','ECR','Chennai','TamilNadu',60025,9845672378,'kishore2000@gmail.com'),
 ('Swetha','Raju','P.N.Pudhur','Coimbatore','TamilNadu',600082,8967245870,'swetha123@gmail.com');
 Insert into Address_Book_Table values('Vedhashni','Velmurugan','Madipakkam','Chennai','TamilNadu',60091,8939620291,'vedha39@gmail.com');
 Insert into Address_Book_Table values('Ashok','Kumar','ECR','Chennai','TamilNadu',600024,9867423567,'ashok32@gmail.com');
---------------UC4------------------------
+
+--------------UC4 Editing the existing contact------------------------
 update Address_Book_Table set EmailId='harsh32@gmail.com' where FirstName='Harish';
 
 update Address_Book_Table set Address='Mambakkam' where FirstName='Kishore';
@@ -34,23 +35,23 @@ update Address_Book_Table set Phonenum=7390802345 where FirstName='Swetha';
 
 select * from Address_Book_Table;
 
-------------------UC5-------------------
+------------------UC5 Delete the contact-------------------
 
 delete from Address_Book_Table where FirstName='Harish' and LastName='Krishnan';
 
---------------------UC6---------------------
+--------------------UC6 Retrive the data by city or state ---------------------
 
 Select FirstName,LastName from Address_Book_Table where City='Chennai' or StateName='TamilNadu';
 
---------------------UC7---------------------
+--------------------UC7 Count of city and state---------------------
 
 Select Count(*) As Count,StateName,City from Address_Book_Table group by StateName,City;
 
--------------------UC8----------------------
+-------------------UC8 Sort the name by alphebatically----------------------
 
 select FirstName,LastName from Address_Book_Table where City='Chennai' order by FirstName;
 
--------------------UC9------------------------------
+-------------------UC9 Adding name and relationtype columns------------------------------
 
 alter table Address_Book_Table
 add AddressBookName varchar(50),
@@ -76,6 +77,13 @@ where Address='Mambakkam';
 
 select * from Address_Book_Table;
 
-------------------------UC10--------------
+------------------------UC10 Count of person by relationtype --------------
 
 Select count(*)as CountType, RelationType  from Address_Book_Table group by RelationType;
+
+--------UC11 Create Contact for both Family and Friends Type --------
+select AddressBookName,FirstName,LastName,Address,City,StateName,ZipCode,PhoneNum,EmailId,ContactTypeName
+from Address_Book_Table 
+Full JOIN Contact_Person on Address_Book.AddressBookID=Contact_Person.AddressBook_ID 
+Full JOIN Relation_Type on Relation_Type.Contact_ID=Contact_Person.ContactID
+Full JOIN Contact_Type on Relation_Type.ContactType_ID=Contact_Type.ContactTypeID;
